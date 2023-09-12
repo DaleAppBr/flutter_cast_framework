@@ -27,7 +27,7 @@ public class PlatformBridgeApis {
     errorList.add(exception.toString());
     errorList.add(exception.getClass().getSimpleName());
     errorList.add(
-            "Cause: " + exception.getCause() + ", Stacktrace: " + Log.getStackTraceString(exception));
+      "Cause: " + exception.getCause() + ", Stacktrace: " + Log.getStackTraceString(exception));
     return errorList;
   }
 
@@ -1551,22 +1551,22 @@ public class PlatformBridgeApis {
 
     void showCastDialog();
 
-    @NonNull
+    @NonNull 
     CastDevice getCastDevice();
 
-    @NonNull
+    @NonNull 
     Boolean isMute();
 
     void setMute(@NonNull Boolean muted);
 
-    @NonNull
+    @NonNull 
     Double getVolume();
 
     void setVolume(@NonNull Double volume);
 
     void loadMediaLoadRequestData(@NonNull MediaLoadRequestData request);
 
-    @NonNull
+    @NonNull 
     MediaInfo getMediaInfo();
 
     void play();
@@ -1587,10 +1587,10 @@ public class PlatformBridgeApis {
 
     void queuePrevItem();
 
-    @NonNull
+    @NonNull 
     Long getQueueItemCount();
 
-    @NonNull
+    @NonNull 
     MediaQueueItem getQueueItemAtIndex(@NonNull Long index);
 
     /** The codec used by CastHostApi. */
@@ -1601,462 +1601,462 @@ public class PlatformBridgeApis {
     static void setup(BinaryMessenger binaryMessenger, CastHostApi api) {
       {
         BasicMessageChannel<Object> channel =
-                new BasicMessageChannel<>(
-                        binaryMessenger, "dev.flutter.pigeon.CastHostApi.sendMessage", getCodec());
+            new BasicMessageChannel<>(
+                binaryMessenger, "dev.flutter.pigeon.CastHostApi.sendMessage", getCodec());
         if (api != null) {
           channel.setMessageHandler(
-                  (message, reply) -> {
-                    ArrayList<Object> wrapped = new ArrayList<Object>();
-                    try {
-                      ArrayList<Object> args = (ArrayList<Object>) message;
-                      assert args != null;
-                      CastMessage messageArg = (CastMessage) args.get(0);
-                      if (messageArg == null) {
-                        throw new NullPointerException("messageArg unexpectedly null.");
-                      }
-                      api.sendMessage(messageArg);
-                      wrapped.add(0, null);
-                    } catch (Error | RuntimeException exception) {
-                      ArrayList<Object> wrappedError = wrapError(exception);
-                      wrapped = wrappedError;
-                    }
-                    reply.reply(wrapped);
-                  });
+              (message, reply) -> {
+                ArrayList<Object> wrapped = new ArrayList<Object>();
+                try {
+                  ArrayList<Object> args = (ArrayList<Object>) message;
+                  assert args != null;
+                  CastMessage messageArg = (CastMessage) args.get(0);
+                  if (messageArg == null) {
+                    throw new NullPointerException("messageArg unexpectedly null.");
+                  }
+                  api.sendMessage(messageArg);
+                  wrapped.add(0, null);
+                } catch (Error | RuntimeException exception) {
+                  ArrayList<Object> wrappedError = wrapError(exception);
+                  wrapped = wrappedError;
+                }
+                reply.reply(wrapped);
+              });
         } else {
           channel.setMessageHandler(null);
         }
       }
       {
         BasicMessageChannel<Object> channel =
-                new BasicMessageChannel<>(
-                        binaryMessenger, "dev.flutter.pigeon.CastHostApi.showCastDialog", getCodec());
+            new BasicMessageChannel<>(
+                binaryMessenger, "dev.flutter.pigeon.CastHostApi.showCastDialog", getCodec());
         if (api != null) {
           channel.setMessageHandler(
-                  (message, reply) -> {
-                    ArrayList<Object> wrapped = new ArrayList<Object>();
-                    try {
-                      api.showCastDialog();
-                      wrapped.add(0, null);
-                    } catch (Error | RuntimeException exception) {
-                      ArrayList<Object> wrappedError = wrapError(exception);
-                      wrapped = wrappedError;
-                    }
-                    reply.reply(wrapped);
-                  });
+              (message, reply) -> {
+                ArrayList<Object> wrapped = new ArrayList<Object>();
+                try {
+                  api.showCastDialog();
+                  wrapped.add(0, null);
+                } catch (Error | RuntimeException exception) {
+                  ArrayList<Object> wrappedError = wrapError(exception);
+                  wrapped = wrappedError;
+                }
+                reply.reply(wrapped);
+              });
         } else {
           channel.setMessageHandler(null);
         }
       }
       {
         BasicMessageChannel<Object> channel =
-                new BasicMessageChannel<>(
-                        binaryMessenger, "dev.flutter.pigeon.CastHostApi.getCastDevice", getCodec());
+            new BasicMessageChannel<>(
+                binaryMessenger, "dev.flutter.pigeon.CastHostApi.getCastDevice", getCodec());
         if (api != null) {
           channel.setMessageHandler(
-                  (message, reply) -> {
-                    ArrayList<Object> wrapped = new ArrayList<Object>();
-                    try {
-                      CastDevice output = api.getCastDevice();
-                      wrapped.add(0, output);
-                    } catch (Error | RuntimeException exception) {
-                      ArrayList<Object> wrappedError = wrapError(exception);
-                      wrapped = wrappedError;
-                    }
-                    reply.reply(wrapped);
-                  });
+              (message, reply) -> {
+                ArrayList<Object> wrapped = new ArrayList<Object>();
+                try {
+                  CastDevice output = api.getCastDevice();
+                  wrapped.add(0, output);
+                } catch (Error | RuntimeException exception) {
+                  ArrayList<Object> wrappedError = wrapError(exception);
+                  wrapped = wrappedError;
+                }
+                reply.reply(wrapped);
+              });
         } else {
           channel.setMessageHandler(null);
         }
       }
       {
         BasicMessageChannel<Object> channel =
-                new BasicMessageChannel<>(
-                        binaryMessenger, "dev.flutter.pigeon.CastHostApi.isMute", getCodec());
+            new BasicMessageChannel<>(
+                binaryMessenger, "dev.flutter.pigeon.CastHostApi.isMute", getCodec());
         if (api != null) {
           channel.setMessageHandler(
-                  (message, reply) -> {
-                    ArrayList<Object> wrapped = new ArrayList<Object>();
-                    try {
-                      Boolean output = api.isMute();
-                      wrapped.add(0, output);
-                    } catch (Error | RuntimeException exception) {
-                      ArrayList<Object> wrappedError = wrapError(exception);
-                      wrapped = wrappedError;
-                    }
-                    reply.reply(wrapped);
-                  });
+              (message, reply) -> {
+                ArrayList<Object> wrapped = new ArrayList<Object>();
+                try {
+                  Boolean output = api.isMute();
+                  wrapped.add(0, output);
+                } catch (Error | RuntimeException exception) {
+                  ArrayList<Object> wrappedError = wrapError(exception);
+                  wrapped = wrappedError;
+                }
+                reply.reply(wrapped);
+              });
         } else {
           channel.setMessageHandler(null);
         }
       }
       {
         BasicMessageChannel<Object> channel =
-                new BasicMessageChannel<>(
-                        binaryMessenger, "dev.flutter.pigeon.CastHostApi.setMute", getCodec());
+            new BasicMessageChannel<>(
+                binaryMessenger, "dev.flutter.pigeon.CastHostApi.setMute", getCodec());
         if (api != null) {
           channel.setMessageHandler(
-                  (message, reply) -> {
-                    ArrayList<Object> wrapped = new ArrayList<Object>();
-                    try {
-                      ArrayList<Object> args = (ArrayList<Object>) message;
-                      assert args != null;
-                      Boolean mutedArg = (Boolean) args.get(0);
-                      if (mutedArg == null) {
-                        throw new NullPointerException("mutedArg unexpectedly null.");
-                      }
-                      api.setMute(mutedArg);
-                      wrapped.add(0, null);
-                    } catch (Error | RuntimeException exception) {
-                      ArrayList<Object> wrappedError = wrapError(exception);
-                      wrapped = wrappedError;
-                    }
-                    reply.reply(wrapped);
-                  });
+              (message, reply) -> {
+                ArrayList<Object> wrapped = new ArrayList<Object>();
+                try {
+                  ArrayList<Object> args = (ArrayList<Object>) message;
+                  assert args != null;
+                  Boolean mutedArg = (Boolean) args.get(0);
+                  if (mutedArg == null) {
+                    throw new NullPointerException("mutedArg unexpectedly null.");
+                  }
+                  api.setMute(mutedArg);
+                  wrapped.add(0, null);
+                } catch (Error | RuntimeException exception) {
+                  ArrayList<Object> wrappedError = wrapError(exception);
+                  wrapped = wrappedError;
+                }
+                reply.reply(wrapped);
+              });
         } else {
           channel.setMessageHandler(null);
         }
       }
       {
         BasicMessageChannel<Object> channel =
-                new BasicMessageChannel<>(
-                        binaryMessenger, "dev.flutter.pigeon.CastHostApi.getVolume", getCodec());
+            new BasicMessageChannel<>(
+                binaryMessenger, "dev.flutter.pigeon.CastHostApi.getVolume", getCodec());
         if (api != null) {
           channel.setMessageHandler(
-                  (message, reply) -> {
-                    ArrayList<Object> wrapped = new ArrayList<Object>();
-                    try {
-                      Double output = api.getVolume();
-                      wrapped.add(0, output);
-                    } catch (Error | RuntimeException exception) {
-                      ArrayList<Object> wrappedError = wrapError(exception);
-                      wrapped = wrappedError;
-                    }
-                    reply.reply(wrapped);
-                  });
+              (message, reply) -> {
+                ArrayList<Object> wrapped = new ArrayList<Object>();
+                try {
+                  Double output = api.getVolume();
+                  wrapped.add(0, output);
+                } catch (Error | RuntimeException exception) {
+                  ArrayList<Object> wrappedError = wrapError(exception);
+                  wrapped = wrappedError;
+                }
+                reply.reply(wrapped);
+              });
         } else {
           channel.setMessageHandler(null);
         }
       }
       {
         BasicMessageChannel<Object> channel =
-                new BasicMessageChannel<>(
-                        binaryMessenger, "dev.flutter.pigeon.CastHostApi.setVolume", getCodec());
+            new BasicMessageChannel<>(
+                binaryMessenger, "dev.flutter.pigeon.CastHostApi.setVolume", getCodec());
         if (api != null) {
           channel.setMessageHandler(
-                  (message, reply) -> {
-                    ArrayList<Object> wrapped = new ArrayList<Object>();
-                    try {
-                      ArrayList<Object> args = (ArrayList<Object>) message;
-                      assert args != null;
-                      Double volumeArg = (Double) args.get(0);
-                      if (volumeArg == null) {
-                        throw new NullPointerException("volumeArg unexpectedly null.");
-                      }
-                      api.setVolume(volumeArg);
-                      wrapped.add(0, null);
-                    } catch (Error | RuntimeException exception) {
-                      ArrayList<Object> wrappedError = wrapError(exception);
-                      wrapped = wrappedError;
-                    }
-                    reply.reply(wrapped);
-                  });
+              (message, reply) -> {
+                ArrayList<Object> wrapped = new ArrayList<Object>();
+                try {
+                  ArrayList<Object> args = (ArrayList<Object>) message;
+                  assert args != null;
+                  Double volumeArg = (Double) args.get(0);
+                  if (volumeArg == null) {
+                    throw new NullPointerException("volumeArg unexpectedly null.");
+                  }
+                  api.setVolume(volumeArg);
+                  wrapped.add(0, null);
+                } catch (Error | RuntimeException exception) {
+                  ArrayList<Object> wrappedError = wrapError(exception);
+                  wrapped = wrappedError;
+                }
+                reply.reply(wrapped);
+              });
         } else {
           channel.setMessageHandler(null);
         }
       }
       {
         BasicMessageChannel<Object> channel =
-                new BasicMessageChannel<>(
-                        binaryMessenger, "dev.flutter.pigeon.CastHostApi.loadMediaLoadRequestData", getCodec());
+            new BasicMessageChannel<>(
+                binaryMessenger, "dev.flutter.pigeon.CastHostApi.loadMediaLoadRequestData", getCodec());
         if (api != null) {
           channel.setMessageHandler(
-                  (message, reply) -> {
-                    ArrayList<Object> wrapped = new ArrayList<Object>();
-                    try {
-                      ArrayList<Object> args = (ArrayList<Object>) message;
-                      assert args != null;
-                      MediaLoadRequestData requestArg = (MediaLoadRequestData) args.get(0);
-                      if (requestArg == null) {
-                        throw new NullPointerException("requestArg unexpectedly null.");
-                      }
-                      api.loadMediaLoadRequestData(requestArg);
-                      wrapped.add(0, null);
-                    } catch (Error | RuntimeException exception) {
-                      ArrayList<Object> wrappedError = wrapError(exception);
-                      wrapped = wrappedError;
-                    }
-                    reply.reply(wrapped);
-                  });
+              (message, reply) -> {
+                ArrayList<Object> wrapped = new ArrayList<Object>();
+                try {
+                  ArrayList<Object> args = (ArrayList<Object>) message;
+                  assert args != null;
+                  MediaLoadRequestData requestArg = (MediaLoadRequestData) args.get(0);
+                  if (requestArg == null) {
+                    throw new NullPointerException("requestArg unexpectedly null.");
+                  }
+                  api.loadMediaLoadRequestData(requestArg);
+                  wrapped.add(0, null);
+                } catch (Error | RuntimeException exception) {
+                  ArrayList<Object> wrappedError = wrapError(exception);
+                  wrapped = wrappedError;
+                }
+                reply.reply(wrapped);
+              });
         } else {
           channel.setMessageHandler(null);
         }
       }
       {
         BasicMessageChannel<Object> channel =
-                new BasicMessageChannel<>(
-                        binaryMessenger, "dev.flutter.pigeon.CastHostApi.getMediaInfo", getCodec());
+            new BasicMessageChannel<>(
+                binaryMessenger, "dev.flutter.pigeon.CastHostApi.getMediaInfo", getCodec());
         if (api != null) {
           channel.setMessageHandler(
-                  (message, reply) -> {
-                    ArrayList<Object> wrapped = new ArrayList<Object>();
-                    try {
-                      MediaInfo output = api.getMediaInfo();
-                      wrapped.add(0, output);
-                    } catch (Error | RuntimeException exception) {
-                      ArrayList<Object> wrappedError = wrapError(exception);
-                      wrapped = wrappedError;
-                    }
-                    reply.reply(wrapped);
-                  });
+              (message, reply) -> {
+                ArrayList<Object> wrapped = new ArrayList<Object>();
+                try {
+                  MediaInfo output = api.getMediaInfo();
+                  wrapped.add(0, output);
+                } catch (Error | RuntimeException exception) {
+                  ArrayList<Object> wrappedError = wrapError(exception);
+                  wrapped = wrappedError;
+                }
+                reply.reply(wrapped);
+              });
         } else {
           channel.setMessageHandler(null);
         }
       }
       {
         BasicMessageChannel<Object> channel =
-                new BasicMessageChannel<>(
-                        binaryMessenger, "dev.flutter.pigeon.CastHostApi.play", getCodec());
+            new BasicMessageChannel<>(
+                binaryMessenger, "dev.flutter.pigeon.CastHostApi.play", getCodec());
         if (api != null) {
           channel.setMessageHandler(
-                  (message, reply) -> {
-                    ArrayList<Object> wrapped = new ArrayList<Object>();
-                    try {
-                      api.play();
-                      wrapped.add(0, null);
-                    } catch (Error | RuntimeException exception) {
-                      ArrayList<Object> wrappedError = wrapError(exception);
-                      wrapped = wrappedError;
-                    }
-                    reply.reply(wrapped);
-                  });
+              (message, reply) -> {
+                ArrayList<Object> wrapped = new ArrayList<Object>();
+                try {
+                  api.play();
+                  wrapped.add(0, null);
+                } catch (Error | RuntimeException exception) {
+                  ArrayList<Object> wrappedError = wrapError(exception);
+                  wrapped = wrappedError;
+                }
+                reply.reply(wrapped);
+              });
         } else {
           channel.setMessageHandler(null);
         }
       }
       {
         BasicMessageChannel<Object> channel =
-                new BasicMessageChannel<>(
-                        binaryMessenger, "dev.flutter.pigeon.CastHostApi.pause", getCodec());
+            new BasicMessageChannel<>(
+                binaryMessenger, "dev.flutter.pigeon.CastHostApi.pause", getCodec());
         if (api != null) {
           channel.setMessageHandler(
-                  (message, reply) -> {
-                    ArrayList<Object> wrapped = new ArrayList<Object>();
-                    try {
-                      api.pause();
-                      wrapped.add(0, null);
-                    } catch (Error | RuntimeException exception) {
-                      ArrayList<Object> wrappedError = wrapError(exception);
-                      wrapped = wrappedError;
-                    }
-                    reply.reply(wrapped);
-                  });
+              (message, reply) -> {
+                ArrayList<Object> wrapped = new ArrayList<Object>();
+                try {
+                  api.pause();
+                  wrapped.add(0, null);
+                } catch (Error | RuntimeException exception) {
+                  ArrayList<Object> wrappedError = wrapError(exception);
+                  wrapped = wrappedError;
+                }
+                reply.reply(wrapped);
+              });
         } else {
           channel.setMessageHandler(null);
         }
       }
       {
         BasicMessageChannel<Object> channel =
-                new BasicMessageChannel<>(
-                        binaryMessenger, "dev.flutter.pigeon.CastHostApi.stop", getCodec());
+            new BasicMessageChannel<>(
+                binaryMessenger, "dev.flutter.pigeon.CastHostApi.stop", getCodec());
         if (api != null) {
           channel.setMessageHandler(
-                  (message, reply) -> {
-                    ArrayList<Object> wrapped = new ArrayList<Object>();
-                    try {
-                      api.stop();
-                      wrapped.add(0, null);
-                    } catch (Error | RuntimeException exception) {
-                      ArrayList<Object> wrappedError = wrapError(exception);
-                      wrapped = wrappedError;
-                    }
-                    reply.reply(wrapped);
-                  });
+              (message, reply) -> {
+                ArrayList<Object> wrapped = new ArrayList<Object>();
+                try {
+                  api.stop();
+                  wrapped.add(0, null);
+                } catch (Error | RuntimeException exception) {
+                  ArrayList<Object> wrappedError = wrapError(exception);
+                  wrapped = wrappedError;
+                }
+                reply.reply(wrapped);
+              });
         } else {
           channel.setMessageHandler(null);
         }
       }
       {
         BasicMessageChannel<Object> channel =
-                new BasicMessageChannel<>(
-                        binaryMessenger, "dev.flutter.pigeon.CastHostApi.showTracksChooserDialog", getCodec());
+            new BasicMessageChannel<>(
+                binaryMessenger, "dev.flutter.pigeon.CastHostApi.showTracksChooserDialog", getCodec());
         if (api != null) {
           channel.setMessageHandler(
-                  (message, reply) -> {
-                    ArrayList<Object> wrapped = new ArrayList<Object>();
-                    try {
-                      api.showTracksChooserDialog();
-                      wrapped.add(0, null);
-                    } catch (Error | RuntimeException exception) {
-                      ArrayList<Object> wrappedError = wrapError(exception);
-                      wrapped = wrappedError;
-                    }
-                    reply.reply(wrapped);
-                  });
+              (message, reply) -> {
+                ArrayList<Object> wrapped = new ArrayList<Object>();
+                try {
+                  api.showTracksChooserDialog();
+                  wrapped.add(0, null);
+                } catch (Error | RuntimeException exception) {
+                  ArrayList<Object> wrappedError = wrapError(exception);
+                  wrapped = wrappedError;
+                }
+                reply.reply(wrapped);
+              });
         } else {
           channel.setMessageHandler(null);
         }
       }
       {
         BasicMessageChannel<Object> channel =
-                new BasicMessageChannel<>(
-                        binaryMessenger, "dev.flutter.pigeon.CastHostApi.skipAd", getCodec());
+            new BasicMessageChannel<>(
+                binaryMessenger, "dev.flutter.pigeon.CastHostApi.skipAd", getCodec());
         if (api != null) {
           channel.setMessageHandler(
-                  (message, reply) -> {
-                    ArrayList<Object> wrapped = new ArrayList<Object>();
-                    try {
-                      api.skipAd();
-                      wrapped.add(0, null);
-                    } catch (Error | RuntimeException exception) {
-                      ArrayList<Object> wrappedError = wrapError(exception);
-                      wrapped = wrappedError;
-                    }
-                    reply.reply(wrapped);
-                  });
+              (message, reply) -> {
+                ArrayList<Object> wrapped = new ArrayList<Object>();
+                try {
+                  api.skipAd();
+                  wrapped.add(0, null);
+                } catch (Error | RuntimeException exception) {
+                  ArrayList<Object> wrappedError = wrapError(exception);
+                  wrapped = wrappedError;
+                }
+                reply.reply(wrapped);
+              });
         } else {
           channel.setMessageHandler(null);
         }
       }
       {
         BasicMessageChannel<Object> channel =
-                new BasicMessageChannel<>(
-                        binaryMessenger, "dev.flutter.pigeon.CastHostApi.seekTo", getCodec());
+            new BasicMessageChannel<>(
+                binaryMessenger, "dev.flutter.pigeon.CastHostApi.seekTo", getCodec());
         if (api != null) {
           channel.setMessageHandler(
-                  (message, reply) -> {
-                    ArrayList<Object> wrapped = new ArrayList<Object>();
-                    try {
-                      ArrayList<Object> args = (ArrayList<Object>) message;
-                      assert args != null;
-                      Number positionArg = (Number) args.get(0);
-                      if (positionArg == null) {
-                        throw new NullPointerException("positionArg unexpectedly null.");
-                      }
-                      api.seekTo((positionArg == null) ? null : positionArg.longValue());
-                      wrapped.add(0, null);
-                    } catch (Error | RuntimeException exception) {
-                      ArrayList<Object> wrappedError = wrapError(exception);
-                      wrapped = wrappedError;
-                    }
-                    reply.reply(wrapped);
-                  });
+              (message, reply) -> {
+                ArrayList<Object> wrapped = new ArrayList<Object>();
+                try {
+                  ArrayList<Object> args = (ArrayList<Object>) message;
+                  assert args != null;
+                  Number positionArg = (Number) args.get(0);
+                  if (positionArg == null) {
+                    throw new NullPointerException("positionArg unexpectedly null.");
+                  }
+                  api.seekTo((positionArg == null) ? null : positionArg.longValue());
+                  wrapped.add(0, null);
+                } catch (Error | RuntimeException exception) {
+                  ArrayList<Object> wrappedError = wrapError(exception);
+                  wrapped = wrappedError;
+                }
+                reply.reply(wrapped);
+              });
         } else {
           channel.setMessageHandler(null);
         }
       }
       {
         BasicMessageChannel<Object> channel =
-                new BasicMessageChannel<>(
-                        binaryMessenger, "dev.flutter.pigeon.CastHostApi.queueAppendItem", getCodec());
+            new BasicMessageChannel<>(
+                binaryMessenger, "dev.flutter.pigeon.CastHostApi.queueAppendItem", getCodec());
         if (api != null) {
           channel.setMessageHandler(
-                  (message, reply) -> {
-                    ArrayList<Object> wrapped = new ArrayList<Object>();
-                    try {
-                      ArrayList<Object> args = (ArrayList<Object>) message;
-                      assert args != null;
-                      MediaQueueItem itemArg = (MediaQueueItem) args.get(0);
-                      if (itemArg == null) {
-                        throw new NullPointerException("itemArg unexpectedly null.");
-                      }
-                      api.queueAppendItem(itemArg);
-                      wrapped.add(0, null);
-                    } catch (Error | RuntimeException exception) {
-                      ArrayList<Object> wrappedError = wrapError(exception);
-                      wrapped = wrappedError;
-                    }
-                    reply.reply(wrapped);
-                  });
+              (message, reply) -> {
+                ArrayList<Object> wrapped = new ArrayList<Object>();
+                try {
+                  ArrayList<Object> args = (ArrayList<Object>) message;
+                  assert args != null;
+                  MediaQueueItem itemArg = (MediaQueueItem) args.get(0);
+                  if (itemArg == null) {
+                    throw new NullPointerException("itemArg unexpectedly null.");
+                  }
+                  api.queueAppendItem(itemArg);
+                  wrapped.add(0, null);
+                } catch (Error | RuntimeException exception) {
+                  ArrayList<Object> wrappedError = wrapError(exception);
+                  wrapped = wrappedError;
+                }
+                reply.reply(wrapped);
+              });
         } else {
           channel.setMessageHandler(null);
         }
       }
       {
         BasicMessageChannel<Object> channel =
-                new BasicMessageChannel<>(
-                        binaryMessenger, "dev.flutter.pigeon.CastHostApi.queueNextItem", getCodec());
+            new BasicMessageChannel<>(
+                binaryMessenger, "dev.flutter.pigeon.CastHostApi.queueNextItem", getCodec());
         if (api != null) {
           channel.setMessageHandler(
-                  (message, reply) -> {
-                    ArrayList<Object> wrapped = new ArrayList<Object>();
-                    try {
-                      api.queueNextItem();
-                      wrapped.add(0, null);
-                    } catch (Error | RuntimeException exception) {
-                      ArrayList<Object> wrappedError = wrapError(exception);
-                      wrapped = wrappedError;
-                    }
-                    reply.reply(wrapped);
-                  });
+              (message, reply) -> {
+                ArrayList<Object> wrapped = new ArrayList<Object>();
+                try {
+                  api.queueNextItem();
+                  wrapped.add(0, null);
+                } catch (Error | RuntimeException exception) {
+                  ArrayList<Object> wrappedError = wrapError(exception);
+                  wrapped = wrappedError;
+                }
+                reply.reply(wrapped);
+              });
         } else {
           channel.setMessageHandler(null);
         }
       }
       {
         BasicMessageChannel<Object> channel =
-                new BasicMessageChannel<>(
-                        binaryMessenger, "dev.flutter.pigeon.CastHostApi.queuePrevItem", getCodec());
+            new BasicMessageChannel<>(
+                binaryMessenger, "dev.flutter.pigeon.CastHostApi.queuePrevItem", getCodec());
         if (api != null) {
           channel.setMessageHandler(
-                  (message, reply) -> {
-                    ArrayList<Object> wrapped = new ArrayList<Object>();
-                    try {
-                      api.queuePrevItem();
-                      wrapped.add(0, null);
-                    } catch (Error | RuntimeException exception) {
-                      ArrayList<Object> wrappedError = wrapError(exception);
-                      wrapped = wrappedError;
-                    }
-                    reply.reply(wrapped);
-                  });
+              (message, reply) -> {
+                ArrayList<Object> wrapped = new ArrayList<Object>();
+                try {
+                  api.queuePrevItem();
+                  wrapped.add(0, null);
+                } catch (Error | RuntimeException exception) {
+                  ArrayList<Object> wrappedError = wrapError(exception);
+                  wrapped = wrappedError;
+                }
+                reply.reply(wrapped);
+              });
         } else {
           channel.setMessageHandler(null);
         }
       }
       {
         BasicMessageChannel<Object> channel =
-                new BasicMessageChannel<>(
-                        binaryMessenger, "dev.flutter.pigeon.CastHostApi.getQueueItemCount", getCodec());
+            new BasicMessageChannel<>(
+                binaryMessenger, "dev.flutter.pigeon.CastHostApi.getQueueItemCount", getCodec());
         if (api != null) {
           channel.setMessageHandler(
-                  (message, reply) -> {
-                    ArrayList<Object> wrapped = new ArrayList<Object>();
-                    try {
-                      Long output = api.getQueueItemCount();
-                      wrapped.add(0, output);
-                    } catch (Error | RuntimeException exception) {
-                      ArrayList<Object> wrappedError = wrapError(exception);
-                      wrapped = wrappedError;
-                    }
-                    reply.reply(wrapped);
-                  });
+              (message, reply) -> {
+                ArrayList<Object> wrapped = new ArrayList<Object>();
+                try {
+                  Long output = api.getQueueItemCount();
+                  wrapped.add(0, output);
+                } catch (Error | RuntimeException exception) {
+                  ArrayList<Object> wrappedError = wrapError(exception);
+                  wrapped = wrappedError;
+                }
+                reply.reply(wrapped);
+              });
         } else {
           channel.setMessageHandler(null);
         }
       }
       {
         BasicMessageChannel<Object> channel =
-                new BasicMessageChannel<>(
-                        binaryMessenger, "dev.flutter.pigeon.CastHostApi.getQueueItemAtIndex", getCodec());
+            new BasicMessageChannel<>(
+                binaryMessenger, "dev.flutter.pigeon.CastHostApi.getQueueItemAtIndex", getCodec());
         if (api != null) {
           channel.setMessageHandler(
-                  (message, reply) -> {
-                    ArrayList<Object> wrapped = new ArrayList<Object>();
-                    try {
-                      ArrayList<Object> args = (ArrayList<Object>) message;
-                      assert args != null;
-                      Number indexArg = (Number) args.get(0);
-                      if (indexArg == null) {
-                        throw new NullPointerException("indexArg unexpectedly null.");
-                      }
-                      MediaQueueItem output = api.getQueueItemAtIndex((indexArg == null) ? null : indexArg.longValue());
-                      wrapped.add(0, output);
-                    } catch (Error | RuntimeException exception) {
-                      ArrayList<Object> wrappedError = wrapError(exception);
-                      wrapped = wrappedError;
-                    }
-                    reply.reply(wrapped);
-                  });
+              (message, reply) -> {
+                ArrayList<Object> wrapped = new ArrayList<Object>();
+                try {
+                  ArrayList<Object> args = (ArrayList<Object>) message;
+                  assert args != null;
+                  Number indexArg = (Number) args.get(0);
+                  if (indexArg == null) {
+                    throw new NullPointerException("indexArg unexpectedly null.");
+                  }
+                  MediaQueueItem output = api.getQueueItemAtIndex((indexArg == null) ? null : indexArg.longValue());
+                  wrapped.add(0, output);
+                } catch (Error | RuntimeException exception) {
+                  ArrayList<Object> wrappedError = wrapError(exception);
+                  wrapped = wrappedError;
+                }
+                reply.reply(wrapped);
+              });
         } else {
           channel.setMessageHandler(null);
         }
@@ -2146,231 +2146,231 @@ public class PlatformBridgeApis {
     }
     public void getSessionMessageNamespaces(Reply<List<String>> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.getSessionMessageNamespaces", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.getSessionMessageNamespaces", getCodec());
       channel.send(
-              null,
-              channelReply -> {
-                @SuppressWarnings("ConstantConditions")
-                List<String> output = (List<String>) channelReply;
-                callback.reply(output);
-              });
+          null,
+          channelReply -> {
+            @SuppressWarnings("ConstantConditions")
+            List<String> output = (List<String>) channelReply;
+            callback.reply(output);
+          });
     }
     public void onCastStateChanged(@NonNull Long castStateArg, Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onCastStateChanged", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onCastStateChanged", getCodec());
       channel.send(
-              new ArrayList<Object>(Collections.singletonList(castStateArg)),
-              channelReply -> callback.reply(null));
+          new ArrayList<Object>(Collections.singletonList(castStateArg)),
+          channelReply -> callback.reply(null));
     }
     public void onMessageReceived(@NonNull CastMessage messageArg, Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onMessageReceived", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onMessageReceived", getCodec());
       channel.send(
-              new ArrayList<Object>(Collections.singletonList(messageArg)),
-              channelReply -> callback.reply(null));
+          new ArrayList<Object>(Collections.singletonList(messageArg)),
+          channelReply -> callback.reply(null));
     }
     public void onSessionStarting(Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onSessionStarting", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onSessionStarting", getCodec());
       channel.send(
-              null,
-              channelReply -> callback.reply(null));
+          null,
+          channelReply -> callback.reply(null));
     }
     public void onSessionStarted(Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onSessionStarted", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onSessionStarted", getCodec());
       channel.send(
-              null,
-              channelReply -> callback.reply(null));
+          null,
+          channelReply -> callback.reply(null));
     }
     public void onSessionStartFailed(Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onSessionStartFailed", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onSessionStartFailed", getCodec());
       channel.send(
-              null,
-              channelReply -> callback.reply(null));
+          null,
+          channelReply -> callback.reply(null));
     }
     public void onSessionEnding(Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onSessionEnding", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onSessionEnding", getCodec());
       channel.send(
-              null,
-              channelReply -> callback.reply(null));
+          null,
+          channelReply -> callback.reply(null));
     }
     public void onSessionEnded(Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onSessionEnded", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onSessionEnded", getCodec());
       channel.send(
-              null,
-              channelReply -> callback.reply(null));
+          null,
+          channelReply -> callback.reply(null));
     }
     public void onSessionResuming(Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onSessionResuming", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onSessionResuming", getCodec());
       channel.send(
-              null,
-              channelReply -> callback.reply(null));
+          null,
+          channelReply -> callback.reply(null));
     }
     public void onSessionResumed(Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onSessionResumed", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onSessionResumed", getCodec());
       channel.send(
-              null,
-              channelReply -> callback.reply(null));
+          null,
+          channelReply -> callback.reply(null));
     }
     public void onSessionResumeFailed(Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onSessionResumeFailed", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onSessionResumeFailed", getCodec());
       channel.send(
-              null,
-              channelReply -> callback.reply(null));
+          null,
+          channelReply -> callback.reply(null));
     }
     public void onSessionSuspended(Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onSessionSuspended", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onSessionSuspended", getCodec());
       channel.send(
-              null,
-              channelReply -> callback.reply(null));
+          null,
+          channelReply -> callback.reply(null));
     }
     public void onStatusUpdated(@NonNull MediaStatus mediaStatusArg, Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onStatusUpdated", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onStatusUpdated", getCodec());
       channel.send(
-              new ArrayList<Object>(Collections.singletonList(mediaStatusArg)),
-              channelReply -> callback.reply(null));
+          new ArrayList<Object>(Collections.singletonList(mediaStatusArg)),
+          channelReply -> callback.reply(null));
     }
     public void onMetadataUpdated(Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onMetadataUpdated", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onMetadataUpdated", getCodec());
       channel.send(
-              null,
-              channelReply -> callback.reply(null));
+          null,
+          channelReply -> callback.reply(null));
     }
     public void onQueueStatusUpdated(Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onQueueStatusUpdated", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onQueueStatusUpdated", getCodec());
       channel.send(
-              null,
-              channelReply -> callback.reply(null));
+          null,
+          channelReply -> callback.reply(null));
     }
     public void onPreloadStatusUpdated(Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onPreloadStatusUpdated", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onPreloadStatusUpdated", getCodec());
       channel.send(
-              null,
-              channelReply -> callback.reply(null));
+          null,
+          channelReply -> callback.reply(null));
     }
     public void onSendingRemoteMediaRequest(Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onSendingRemoteMediaRequest", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onSendingRemoteMediaRequest", getCodec());
       channel.send(
-              null,
-              channelReply -> callback.reply(null));
+          null,
+          channelReply -> callback.reply(null));
     }
     public void onAdBreakStatusUpdated(@NonNull MediaStatus mediaStatusArg, Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onAdBreakStatusUpdated", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onAdBreakStatusUpdated", getCodec());
       channel.send(
-              new ArrayList<Object>(Collections.singletonList(mediaStatusArg)),
-              channelReply -> callback.reply(null));
+          new ArrayList<Object>(Collections.singletonList(mediaStatusArg)),
+          channelReply -> callback.reply(null));
     }
     public void onMediaError(Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onMediaError", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onMediaError", getCodec());
       channel.send(
-              null,
-              channelReply -> callback.reply(null));
+          null,
+          channelReply -> callback.reply(null));
     }
     public void onProgressUpdated(@NonNull Long progressMsArg, @NonNull Long durationMsArg, Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onProgressUpdated", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onProgressUpdated", getCodec());
       channel.send(
-              new ArrayList<Object>(Arrays.asList(progressMsArg, durationMsArg)),
-              channelReply -> callback.reply(null));
+          new ArrayList<Object>(Arrays.asList(progressMsArg, durationMsArg)),
+          channelReply -> callback.reply(null));
     }
     public void onAdBreakClipProgressUpdated(@NonNull String adBreakIdArg, @NonNull String adBreakClipIdArg, @NonNull Long progressMsArg, @NonNull Long durationMsArg, @NonNull Long whenSkippableMsArg, Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onAdBreakClipProgressUpdated", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.onAdBreakClipProgressUpdated", getCodec());
       channel.send(
-              new ArrayList<Object>(Arrays.asList(adBreakIdArg, adBreakClipIdArg, progressMsArg, durationMsArg, whenSkippableMsArg)),
-              channelReply -> callback.reply(null));
+          new ArrayList<Object>(Arrays.asList(adBreakIdArg, adBreakClipIdArg, progressMsArg, durationMsArg, whenSkippableMsArg)),
+          channelReply -> callback.reply(null));
     }
     public void itemsInsertedInRange(@NonNull Long insertIndexArg, @NonNull Long insertCountArg, Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.itemsInsertedInRange", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.itemsInsertedInRange", getCodec());
       channel.send(
-              new ArrayList<Object>(Arrays.asList(insertIndexArg, insertCountArg)),
-              channelReply -> callback.reply(null));
+          new ArrayList<Object>(Arrays.asList(insertIndexArg, insertCountArg)),
+          channelReply -> callback.reply(null));
     }
     public void itemsReloaded(Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.itemsReloaded", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.itemsReloaded", getCodec());
       channel.send(
-              null,
-              channelReply -> callback.reply(null));
+          null,
+          channelReply -> callback.reply(null));
     }
     public void itemsRemovedAtIndexes(@NonNull List<Long> indexesArg, Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.itemsRemovedAtIndexes", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.itemsRemovedAtIndexes", getCodec());
       channel.send(
-              new ArrayList<Object>(Collections.singletonList(indexesArg)),
-              channelReply -> callback.reply(null));
+          new ArrayList<Object>(Collections.singletonList(indexesArg)),
+          channelReply -> callback.reply(null));
     }
     public void itemsReorderedAtIndexes(@NonNull List<Long> indexesArg, @NonNull Long insertBeforeIndexArg, Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.itemsReorderedAtIndexes", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.itemsReorderedAtIndexes", getCodec());
       channel.send(
-              new ArrayList<Object>(Arrays.asList(indexesArg, insertBeforeIndexArg)),
-              channelReply -> callback.reply(null));
+          new ArrayList<Object>(Arrays.asList(indexesArg, insertBeforeIndexArg)),
+          channelReply -> callback.reply(null));
     }
     public void itemsUpdatedAtIndexes(@NonNull List<Long> indexesArg, Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.itemsUpdatedAtIndexes", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.itemsUpdatedAtIndexes", getCodec());
       channel.send(
-              new ArrayList<Object>(Collections.singletonList(indexesArg)),
-              channelReply -> callback.reply(null));
+          new ArrayList<Object>(Collections.singletonList(indexesArg)),
+          channelReply -> callback.reply(null));
     }
     public void mediaQueueChanged(Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.mediaQueueChanged", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.mediaQueueChanged", getCodec());
       channel.send(
-              null,
-              channelReply -> callback.reply(null));
+          null,
+          channelReply -> callback.reply(null));
     }
     public void mediaQueueWillChange(Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
-              new BasicMessageChannel<>(
-                      binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.mediaQueueWillChange", getCodec());
+          new BasicMessageChannel<>(
+              binaryMessenger, "dev.flutter.pigeon.CastFlutterApi.mediaQueueWillChange", getCodec());
       channel.send(
-              null,
-              channelReply -> callback.reply(null));
+          null,
+          channelReply -> callback.reply(null));
     }
   }
 }

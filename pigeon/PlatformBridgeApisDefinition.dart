@@ -283,8 +283,14 @@ class CastMessage {
 abstract class CastHostApi {
   void sendMessage(CastMessage message);
   void showCastDialog();
-  void setMute(bool muted);
   CastDevice getCastDevice();
+
+  //region CastSession
+  bool isMute();
+  void setMute(bool muted);
+  double getVolume();
+  void setVolume(double volume);
+  //endregion
 
   //region RemoteMediaClient
   void loadMediaLoadRequestData(MediaLoadRequestData request);

@@ -438,6 +438,24 @@ class FlutterCastFrameworkPlugin : FlutterPlugin, MethodCallHandler, ActivityAwa
                 modelName = castDevice?.modelName
             }
         }
+
+        override fun isMute(): Boolean {
+            val castSession = mCastSession ?: throw IllegalStateException("Missing cast session")
+
+            return castSession.isMute
+        }
+
+        override fun getVolume(): Double {
+            val castSession = mCastSession ?: throw IllegalStateException("Missing cast session")
+
+            return castSession.volume
+        }
+
+        override fun setVolume(volume: Double) {
+            val castSession = mCastSession ?: return
+
+            castSession.volume = volume
+        }
     }
 
     private fun getOnNamespaceResult(oldSession: CastSession?, newSession: CastSession?) = PlatformBridgeApis.CastFlutterApi.Reply<MutableList<String>> { namespaces ->

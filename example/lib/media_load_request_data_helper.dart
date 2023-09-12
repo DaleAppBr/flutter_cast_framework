@@ -7,8 +7,8 @@ const double QUEUE_PRELOAD_TIME = 20;
 const mainVideo = const VideoInfo(
   "Big Buck Bunny",
   "Blender Foundation",
-  "https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/mp4/BigBuckBunny.mp4",
-  "mp4",
+  "https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/hls/BigBuckBunny.m3u8",
+  "application/x-mpegurl",
   596 * 1000,
   "https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/images/480x270/BigBuckBunny.jpg",
   "https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/images/780x1200/BigBuckBunny-780x1200.jpg",
